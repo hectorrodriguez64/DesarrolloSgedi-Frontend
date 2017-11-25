@@ -1,0 +1,44 @@
+<!--
+<div><h1>Listado de mis documentos</h1></div>
+<div>
+  <a target="_blank" href="../../../assets/documentos/tesis72.pdf" download="{{item.ulrImg}}" alt="">{{item.documentos}}</a>
+</div>
+<div ng-repeat='{{item.documentos}}'>
+  <a target="_blank" href="../../../assets/documentos/tesis72.pdf" download="{{item.ulrImg}}" alt="">{{item.documentos}}</a>
+</div>
+
+<iframe src="../../../assets/documentos/tesis72.pdf" width="100" height="100" frameborder="1"></iframe>
+<iframe src="../../../assets/documentos/ieee830.pdf" width="100" height="100" frameborder="1"></iframe>
+<iframe src="../../../assets/documentos/Recuperacion.PDF" width="100" height="100" frameborder="1"></iframe>
+<iframe src="../../../assets/documentoss/licitaciones.odt" width="100" height="100"></iframe>
+
+<a target="_blank" href="../../../assets/documentos/{{item.ulrImg}}" download="{{item.ulrImg}}" alt="">{{item.ulrImg}}</a>
+<div><h1>Listado de mis documentos</h1></div>
+<div ng-repeat='item in vm.arreglo'>
+   Id: {{item.id}}</br>
+   Archivo: {{item.file}}</br>
+</div>-->
+<h2>Lista de mis archivos</h2>
+<!--Categoría de Archivo-->
+<iframe src="../../../assets/documentos/tesis72.pdf" width="100" height="100" frameborder="1"></iframe>
+
+<form ng-submit="vm.create(form)" >
+  <md-dialog-content>
+    ¿Deseas subir un nuevo documento?
+    <h5>Selecciona el nuevo documento</h5>
+    <input type="file"
+    class="button"
+    ngf-select
+    ng-model="vm.file"
+    name="file"
+    ngf-max-size="20MB"
+    ngf-min-height="100"
+    ngf-resize="{width: 100, height: 100}"
+    >
+    <!--div class="button" ngf-select ng-model="vm.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">Seleccionar Imágen</div-->
+</md-dialog-content>
+<section>
+    <button type="submit">Subir Documentos</button>
+</section>
+
+</form>

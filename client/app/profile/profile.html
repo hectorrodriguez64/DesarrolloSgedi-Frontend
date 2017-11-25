@@ -1,0 +1,183 @@
+<div class="container">
+<!-- Encabezado de página / Breadcrumb -->
+<div class="row">
+   <div class="col-md-12">
+      <h1 class="page-header" text-center>Sistema De Gestión Documental Inteligente</h1>
+      <ol class="breadcrumb">
+         <li><a ui-sref="main">Home</a></li>
+         <li><a ui-sref="usuarios create">Sign Up</a></li>
+         <li><a ui-sref="login">Login</a></li>
+         <li><a ui-sref="profile">profile</a></li>
+         <li class="active">Editando datos</li>
+      </ol>
+   </div>
+</div>
+<!-- Fin Encabezado de página / Breadcrumb -->
+<!-- Contact Form -->
+<!-- Campos del formulario de contacto con validación de campos-->
+<div class="row">
+<!-- Columna de la izquierda -->
+<div class="col-md-3">
+   <div class="col-md-12" align="center">
+     <li class="Img-perfil" ng-show="vm.AuthService.isAuthenticated()" class="img-avatar"><a href="">
+       <img class="img-responsive img-thumbnail" ng-src="../../assets/fotos-usuarios/{{vm.AuthService.getImagePerfil()}}"  alt=""></a></li>
+   </div>
+   <div class="col-md-12 text-center">
+     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{vm.AuthService.datosUsuario()}} <!--span class="caret"></span--></a>
+     <ul class="dropdown-menu text-center">
+   </div>
+   <section>
+    <div class="formulario-client">
+        <h4 class="register-formTitle">Subir Imagen Prueba</h4>
+        <div class="panel-body2">
+            <div layout="column" ng-cloak class="md-inline-form">
+                <md-content layout-padding>
+                    <form name="form" ng-submit="vm.create(form)">
+                        <md-dialog-content>
+                          Seleccione su imagen
+                            <input type="file"
+                            class="button"
+                            ngf-select ng-model="vm.file"
+                            name="file"
+                            ngf-pattern="'image/*'"
+                            ngf-accept="'image/*'"
+                            ngf-max-size="20MB"
+                            ngf-min-height="100"
+                            ngf-resize="{width: 100, height: 100}"
+                            placeholder="Selecionar Imagen">
+                          </md-dialog-content>
+                            <section>
+                                <button type="submit">Subir Imágen</button>
+                            </section>
+                    </form>
+                </md-content>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</section>
+   <div class="col-md-12">
+      <!-- Barra vertical de opciones del perfil de usuairo -->
+      <br>
+      <ul class="list-group list-primary">
+         <!--<li class="list-group-item"><a ui-sref="profile-update">Mi perfil</a></li>-->
+         <div class="btn-group">
+           <button type="button"
+           class="glyphicon glyphicon-user btn btn-default dropdown-toggle"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             Mi Perfil <span class="caret"></span>
+           </button>
+           <ul class="dropdown-menu">
+             <li><a ui-sref="profile-update">Datos Básicos</a></li>
+             <li><a href="#profileForm">Información Personal</a></li>
+           </ul>
+         </div>
+
+
+
+        <div class="btn-group">
+        <button type="button" class="glyphicon glyphicon-folder-open btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mis Documentos <span class="caret"></span>
+        </button>
+
+        <ul class="dropdown-menu">
+          <li><a ui-sref="documentos">Archivo</a></li>
+          <li><a href="#">Administración</a></li>
+          <li><a href="#">Facturas</a></li>
+          <li><a href="#">Documentos legales</a></li>
+          <li><a href="#">Personales</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Agregar otra categoría</a></li>
+        </ul>
+      </div>
+
+        <div class="btn-group">
+        <button type="button" class="glyphicon glyphicon-gift btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Preferencias
+        </button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="glyphicon glyphicon-cog btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Configuraciones
+        </button>
+      </div>
+    </ul>
+   </div>
+   <!-- Fin Barra vertical de opciones del perfil de usuario -->
+</div>
+<!-- Fin de Columna de la izquierda -->
+<!-- Parte central -->
+<div class="col-md-9">
+<div class="col-md-12" style="border-width: 1px 1px 0px 1px; border-style: solid; border-color: lightgrey;" >
+
+  <!--UI-VIEW-->
+  <md-content>
+    <div ui-view=""></div>
+  </md-content>
+
+<div class="">
+  <h3 style="text-align: center">
+     Mi perfil
+     <p><small>Añade información personal para compartir tu perfil</small></p>
+  </h3>
+<!--Se inicia el form (ojo todos los elementos de formulario deben ir dentro de esta etiqueta-->
+<form name="modifyProfile" id="profileForm" novalidate>
+<!-- Inicio del div central parte de formulario información básica -->
+<div class="col-md-12" style="border-width: 1px 1px 0px 1px; border-style: solid; border-color: lightgrey; background: #f1f3f6;">
+  <div class="col-md-8 col-md-offset-2">
+     <div class="control-group form-group">
+        <div class="controls">
+           <br>
+           <label>Información básica</label>
+           <span id="alertName" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+           <input type="text" class="form-control" id="txtName" placeholder="Introduzca su nombre" required data-validation-required-message="Por favor introduzca su nomnbre.">
+           </span>
+           <br>
+           <span id="alertSurname" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+           <input type="text" class="form-control" id="txtSurname" placeholder="Introduzca sus apellidos" required data-validation-required-message="Por favor introduzca sus apellidos.">
+           </span>
+           <br>
+           <span id="alertQualification" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+           <input type="text" class="form-control" id="txtQualification" placeholder="Introduzca su título" required data-validation-required-message="Por favor introduzca su título.">
+           </span>
+           <br>
+           <span id="alertEmail" data-toggle="popover" data-trigger="hover" data-placement="right" title="" data-content="">
+           <input type="email" class="form-control" id="txtEmail" placeholder="Introduzca su email" required data-validation-required-message="Por favor introduzca su email.">
+           </span>
+           <p class="help-block"></p>
+        </div>
+     </div>
+     <div class="control-group form-group">
+        <div class="controls">
+           <label>Biografía:</label>
+           <span id="alertBiography" data-toggle="popover" data-trigger="hover" data-placement="auto" title="" data-content="">
+           <textarea rows="6" cols="30" class="form-control" id="txtBiography" required maxlength="999" style="resize:none"
+              data-validation-required-message="Por favor introduzca su biografía deseada."></textarea>
+           </span>
+        </div>
+     </div>
+  </div>
+</div>
+</div>
+<div class="col-md-12 text-center">
+  <!-- Redes sociales-->
+  <ul class="list-unstyled list-inline list-social-icons">
+     <li>
+        <a href="#"><i class="editIcons icon-facebook-square editSizeIcons"></i></a>
+     </li>
+     <li>
+        <a href="#"><i class="editIcons icon-linkedin-square editSizeIcons"></i></a>
+     </li>
+     <li>
+        <a href="#"><i class="editIcons icon-twitter-square editSizeIcons"></i></a>
+     </li>
+     <li>
+        <a href="#"><i class="editIcons icon-google-plus-square editSizeIcons"></i></a>
+     </li>
+  </ul>
+  <!-- Fin redes sociales -->
+</div>
+
+</div>
